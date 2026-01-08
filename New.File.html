@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saidur Update News | সাইদুর আপডেট নিউজ - সত্য ও নিরপেক্ষ সংবাদ</title>
+    <meta name="description" content="বাংলাদেশ ও বিশ্বের সর্বশেষ খবর - জাতীয়, আন্তর্জাতিক, খেলা, প্রযুক্তি, বিনোদন">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #c41e3a;
+            --secondary-color: #1a1a2e;
+            --accent-color: #0f3460;
+            --light-bg: #ffffff;
+            --dark-bg: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --border-color: #dee2e6;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
+        .dark-mode {
+            --light-bg: #1a1a2e;
+            --dark-bg: #16213e;
+            --text-primary: #e9ecef;
+            --text-secondary: #adb5bd;
+            --border-color: #495057;
+        }
+
+        body {
+            font-family: 'Kalpurush', 'SolaimanLipi', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Breaking News Ticker */
+        .breaking-news {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(196, 30, 58, 0.3);
+        }
+
+        .breaking-container {
+            display: flex;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breaking-label {
+            background: white;
+            color: var(--primary-color);
+            padding: 5px 20px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin-right: 20px;
+            white-space: nowrap;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .breaking-content {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .ticker-wrap {
+            display: flex;
+            animation: scroll 40s linear infinite;
+        }
+
+        .ticker-item {
+            margin-right: 80px;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .ticker-item i {
+            margin-right: 8px;
+            color: #ffd700;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--secondary-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.85em;
+        }
+
+        .top-bar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .live-date {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--danger);
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            color: white;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        /* Header */
+        header {
+            background: var(--light-bg);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .site-info h1 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 2px;
+        }
+
+        .site-tagline {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .weather-widget {
+            background: var(--dark-bg);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weather-icon {
+            font-size: 1.5em;
+        }
+
+        .prayer-widget {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 15px 20px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background: var(--dark-bg);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--dark-bg);
+            border-radius: 25px;
+            padding: 5px 15px;
+            border: 2px solid var(--border-color);
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 8px;
+            color: var(--text-primary);
+            width: 200px;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-box button:hover {
+            background: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--border-color);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* News Stats */
+        .news-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: white;
+        }
+
+        .stat-icon.news { background: var(--primary-color); }
+        .stat-icon.views { background: var(--success); }
+        .stat-icon.trending { background: var(--warning); }
+        .stat-icon.live { background: var(--danger); }
+
+        .stat-info h3 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+        }
+
+        .stat-info p {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        /* Category Pills */
+        .category-pills {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .category-pill {
+            padding: 10px 25px;
+            background: var(--dark-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(196, 30, 58, 0.2);
+        }
+
+        .category-pill.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Featured Section */
+        .featured-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .featured-main {
+            position: relative;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .featured-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .featured-main:hover img {
+            transform: scale(1.1);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 40px;
+            color: white;
+        }
+
+        .featured-category {
+            display: inline-block;
+            background: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .featured-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .featured-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-item {
+            background: var(--light-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .sidebar-content {
+            padding: 15px;
+        }
+
+        .sidebar-content h4 {
+            color: var(--text-primary);
+            font-size: 1em;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .sidebar-content small {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .view-all:hover {
+            gap: 10px;
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .news-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .news-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.15);
+        }
+
+        .news-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(196, 30, 58, 0.4);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+
+        .news-meta i {
+            color: var(--primary-color);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .share-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .share-btn.facebook { background: #1877f2; }
+        .share-btn.twitter { background: #1da1f2; }
+        .share-btn.whatsapp { background: #25d366; }
+
+        .share-btn:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        /* No News */
+        .no-news {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--light-bg);
+            border-radius: 15px;
+            grid-column: 1 / -1;
+        }
+
+        .no-news i {
+            font-size: 4em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 50px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        .copyright a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .featured-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .site-info h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <p class="loading-text">খবর লোড হচ্ছে...</p>
+    </div>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="breaking-container">
+            <div class="breaking-label">
+                <i class="fas fa-bolt"></i> ব্রেকিং নিউজ
+            </div>
+            <div class="breaking-content">
+                <div class="ticker-wrap" id="breakingTicker">
+                    <span class="ticker-item"><i class="fas fa-fire"></i> সর্বশেষ খবর আপডেট হচ্ছে...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="live-date">
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    <span>LIVE</span>
+                </div>
+                <span id="currentDateTime"></span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                    <span id="themeText">ডার্ক মোড</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-main">
+            <div class="logo-section">
+                <div class="logo">SU</div>
+                <div class="site-info">
+                    <h1>Saidur Update News</h1>
+                    <p class="site-tagline">সত্য ও নিরপেক্ষ সংবাদ - বাংলাদেশ ও বিশ্ব</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="weather-widget">
+                    <i class="fas fa-cloud-sun weather-icon"></i>
+                    <div>
+                        <div style="font-weight: bold;" id="weatherCity">ঢাকা</div>
+                        <div style="font-size: 0.9em; color: var(--text-secondary);" id="weatherTemp">২৮°C</div>
+                    </div>
+                </div>
+                <div class="prayer-widget">
+                    <i class="fas fa-mosque"></i>
+                    <div id="prayerTime">নামাজের সময়</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="filterByCategory('all', event)"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="#" onclick="filterByCategory('জাতীয়', event)"><i class="fas fa-flag"></i> জাতীয়</a></li>
+                <li><a href="#" onclick="filterByCategory('আন্তর্জাতিক', event)"><i class="fas fa-globe"></i> আন্তর্জাতিক</a></li>
+                <li><a href="#" onclick="filterByCategory('খেলা', event)"><i class="fas fa-futbol"></i> খেলা</a></li>
+                <li><a href="#" onclick="filterByCategory('প্রযুক্তি', event)"><i class="fas fa-laptop"></i> প্রযুক্তি</a></li>
+                <li><a href="#" onclick="filterByCategory('বিনোদন', event)"><i class="fas fa-film"></i> বিনোদন</a></li>
+                <li><a href="https://saidursono.github.io/Saidur/" target="_blank"><i class="fas fa-user"></i> পোর্টফোলিও</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="খবর খুঁজুন..." id="searchInput" onkeypress="handleSearch(event)">
+                <button onclick="searchNews()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- News Stats -->
+        <div class="news-stats">
+            <div class="stat-card">
+                <div class="stat-icon news"><i class="fas fa-newspaper"></i></div>
+                <div class="stat-info">
+                    <h3 id="totalNews">0
+</h3>
+                    <p>মোট খবর</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon views"><i class="fas fa-eye"></i></div>
+                <div class="stat-info">
+                    <h3>1.2M+</h3>
+                    <p>ভিজিটর</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon trending"><i class="fas fa-fire"></i></div>
+                <div class="stat-info">
+                    <h3 id="trendingCount">0</h3>
+                    <p>ট্রেন্ডিং</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon live"><i class="fas fa-broadcast-tower"></i></div>
+                <div class="stat-info">
+                    <h3>LIVE</h3>
+                    <p>সরাসরি</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="category-pills">
+            <button class="category-pill active" onclick="filterNews('all', event)">
+                <i class="fas fa-th"></i> সব খবর
+            </button>
+            <button class="category-pill" onclick="filterNews('জাতীয়', event)">
+                <i class="fas fa-flag"></i> জাতীয়
+            </button>
+            <button class="category-pill" onclick="filterNews('আন্তর্জাতিক', event)">
+                <i class="fas fa-globe"></i> আন্তর্জাতিক
+            </button>
+            <button class="category-pill" onclick="filterNews('খেলা', event)">
+                <i class="fas fa-futbol"></i> খেলা
+            </button>
+            <button class="category-pill" onclick="filterNews('প্রযুক্তি', event)">
+                <i class="fas fa-microchip"></i> প্রযুক্তি
+            </button>
+            <button class="category-pill" onclick="filterNews('বিনোদন', event)">
+                <i class="fas fa-film"></i> বিনোদন
+            </button>
+            <button class="category-pill" onclick="filterNews('অর্থনীতি', event)">
+                <i class="fas fa-chart-line"></i> অর্থনীতি
+            </button>
+        </div>
+
+        <!-- Featured News Section -->
+        <div id="featuredSection" class="featured-section"></div>
+
+        <!-- Latest News Section -->
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-newspaper"></i> সর্বশেষ খবর
+            </h2>
+            <a href="#" class="view-all">সব দেখুন <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div id="newsContainer" class="news-grid"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Saidur Update News</h3>
+                <p>সত্য ও নিরপেক্ষ সংবাদ প্রচারে আমরা প্রতিশ্রুতিবদ্ধ। বাংলাদেশ ও বিশ্বের সর্বশেষ খবর পেতে আমাদের সাথে থাকুন।</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>যোগাযোগ</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:01770157540"><i class="fas fa-phone"></i> 01770157540</a></li>
+                    <li><a href="mailto:info@saidurupdatenews.com"><i class="fas fa-envelope"></i> info@saidurupdatenews.com</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-angle-right"></i> আমাদের সম্পর্কে</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> যোগাযোগ</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> গোপনীয়তা নীতি</a></li>
+                    <li><a href="https://saidursono.github.io/Saidur/" target="_blank"><i class="fas fa-angle-right"></i> পোর্টফোলিও</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2026 Saidur Update News | Developed by <a href="https://saidursono.github.io/Saidur/" target="_blank">Saidur Rahman</a></p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Multiple API Configuration
+        const API_SOURCES = [
+            {
+                name: 'NewsAPI',
+                key: '4c3fe0ca1a0847f8a37a8ee071ff8774',
+                url: 'https://newsapi.org/v2/top-headlines',
+                params: '?country=us&pageSize=50'
+            },
+            {
+                name: 'GNews',
+                key: 'YOUR_GNEWS_API_KEY',
+                url: 'https://gnews.io/api/v4/top-headlines',
+                params: '?lang=en&max=50'
+            },
+            {
+                name: 'NewsData',
+                key: 'YOUR_NEWSDATA_API_KEY',
+                url: 'https://newsdata.io/api/1/news',
+                params: '?language=en'
+            }
+        ];
+
+        // RSS Feed Backup Sources
+        const RSS_FEEDS = [
+            'https://www.prothomalo.com/feed/',
+            'https://www.bbc.com/bengali/index.xml',
+            'https://www.kalerkantho.com/rss.xml',
+            'https://www.jugantor.com/feed/rss.xml'
+        ];
+
+        // Global variables
+        let allNews = [];
+        let currentCategory = 'all';
+        let darkMode = false;
+        let currentAPIIndex = 0;
+        let loadTimeout;
+
+        // Sample backup news data
+        const BACKUP_NEWS = [
+            {
+                title: "বাংলাদেশে নতুন প্রযুক্তি উদ্ভাবন",
+                description: "দেশীয় প্রযুক্তিবিদরা নতুন একটি উদ্ভাবনী প্রযুক্তি উন্মোচন করেছেন যা দেশের ডিজিটাল খাতে নতুন মাত্রা যোগ করবে।",
+                url: "https://www.prothomalo.com",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/default.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "প্রথম আলো" },
+                category: "প্রযুক্তি"
+            },
+            {
+                title: "আন্তর্জাতিক ক্রিকেটে বাংলাদেশের নতুন সাফল্য",
+                description: "বাংলাদেশ জাতীয় ক্রিকেট দল আন্তর্জাতিক মাঠে আরেকটি উজ্জ্বল বিজয় অর্জন করেছে।",
+                url: "https://www.prothomalo.com/sports",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/cricket.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "খেলাধুলা" },
+                category: "খেলা"
+            },
+            {
+                title: "অর্থনীতিতে নতুন সম্ভাবনা",
+                description: "দেশের অর্থনীতিতে ইতিবাচক পরিবর্তন আসছে বলে জানিয়েছেন অর্থনীতিবিদরা।",
+                url: "https://www.prothomalo.com/business",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/economy.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "বিজনেস" },
+                category: "অর্থনীতি"
+            },
+            {
+                title: "ঢাকায় নতুন মেট্রোরেল লাইন উদ্বোধন",
+                description: "রাজধানীতে যোগাযোগ ব্যবস্থার উন্নতিতে নতুন মেট্রোরেল লাইন চালু হয়েছে।",
+                url: "https://www.prothomalo.com",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/metro.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "জাতীয়" },
+                category: "জাতীয়"
+            },
+            {
+                title: "বিশ্ব পরিবেশ দিবস পালন",
+                description: "পরিবেশ সংরক্ষণে সচেতনতা বৃদ্ধির লক্ষ্যে বিশ্ব পরিবেশ দিবস পালিত হচ্ছে।",
+                url: "https://www.prothomalo.com",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/environment.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "আন্তর্জাতিক" },
+                category: "আন্তর্জাতিক"
+            },
+            {
+                title: "নতুন বলিউড সিনেমা মুক্তি",
+                description: "এই সপ্তাহে বলিউডের বহুল প্রতীক্ষিত একটি চলচ্চিত্র মুক্তি পাচ্ছে।",
+                url: "https://www.prothomalo.com/entertainment",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/movie.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "বিনোদন" },
+                category: "বিনোদন"
+            },
+            {
+                title: "স্বাস্থ্য খাতে সরকারের নতুন পদক্ষেপ",
+                description: "জনগণের স্বাস্থ্যসেবা নিশ্চিতে সরকার নতুন কর্মসূচি ঘোষণা করেছে।",
+                url: "https://www.prothomalo.com",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/health.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "স্বাস্থ্য" },
+                category: "জাতীয়"
+            },
+            {
+                title: "শিক্ষা খাতে ডিজিটাল রূপান্তর",
+                description: "দেশের শিক্ষা ব্যবস্থায় ডিজিটাল প্রযুক্তির ব্যবহার বৃদ্ধি পাচ্ছে।",
+                url: "https://www.prothomalo.com",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/education.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "শিক্ষা" },
+                category: "জাতীয়"
+            },
+            {
+                title: "আন্তর্জাতিক বাজারে তেলের দাম বৃদ্ধি",
+                description: "বিশ্ববাজারে অপরিশোধিত তেলের দাম বৃদ্ধি পেয়েছে বলে জানা গেছে।",
+                url: "https://www.prothomalo.com",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/oil.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "আন্তর্জাতিক" },
+                category: "আন্তর্জাতিক"
+            },
+            {
+                title: "কৃত্রিম বুদ্ধিমত্তায় নতুন অগ্রগতি",
+                description: "এআই প্রযুক্তিতে নতুন উদ্ভাবন প্রযুক্তি জগতে আলোড়ন সৃষ্টি করেছে।",
+                url: "https://www.prothomalo.com",
+                urlToImage: "https://images.prothomalo.com/prothomalo-bangla/2024-01/ai.jpg",
+                publishedAt: new Date().toISOString(),
+                source: { name: "প্রযুক্তি" },
+                category: "প্রযুক্তি"
+            }
+        ];
+
+        // Initialize
+        async function init() {
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            updatePrayerTime();
+            getWeather();
+            
+            // Set 2 second timeout
+            loadTimeout = setTimeout(() => {
+                if (allNews.length === 0) {
+                    loadBackupNews();
+                }
+            }, 2000);
+            
+            await loadNews();
+            setupScrollButton();
+        }
+
+        // Update Date Time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('currentDateTime').textContent = now.toLocaleDateString('bn-BD', options);
+        }
+
+        // Update Prayer Time
+        function updatePrayerTime() {
+            const now = new Date();
+            const hour = now.getHours();
+            let prayer = '';
+            
+            if (hour >= 5 && hour < 6) prayer = 'ফজর';
+            else if (hour >= 12 && hour < 13) prayer = 'জোহর';
+            else if (hour >= 16 && hour < 17) prayer = 'আসর';
+            else if (hour >= 18 && hour < 19) prayer = 'মাগরিব';
+            else if (hour >= 20 && hour < 21) prayer = 'এশা';
+            else prayer = 'পরবর্তী নামাজ';
+            
+            document.getElementById('prayerTime').textContent = prayer;
+        }
+
+        // Get Weather
+        async function getWeather() {
+            try {
+                const response = await fetch('https://wttr.in/Dhaka?format=j1');
+                const data = await response.json();
+                const temp = data.current_condition[0].temp_C;
+                document.getElementById('weatherTemp').textContent = `${temp}°C`;
+            } catch (error) {
+                console.log('Weather data unavailable');
+            }
+        }
+
+        // Load News with fallback
+        async function loadNews() {
+            try {
+                showLoading();
+                
+                // Try primary API
+                const response = await Promise.race([
+                    fetchFromAPI(0),
+                    new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 2000))
+                ]);
+                
+                if (response && response.articles && response.articles.length > 0) {
+                    clearTimeout(loadTimeout);
+                    processNews(response.articles);
+                } else {
+                    throw new Error('No articles');
+                }
+                
+            } catch (error) {
+                console.log('Primary API failed, trying backup...');
+                
+                // Try secondary API
+                try {
+                    currentAPIIndex = 1;
+                    const response = await Promise.race([
+                        fetchFromAPI(1),
+                        new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 2000))
+                    ]);
+                    
+                    if (response && response.articles && response.articles.length > 0) {
+                        clearTimeout(loadTimeout);
+                        processNews(response.articles);
+                    } else {
+                        throw new Error('Secondary API failed');
+                    }
+                } catch (secondError) {
+                    console.log('All APIs failed, loading backup news...');
+                    clearTimeout(loadTimeout);
+                    loadBackupNews();
+                }
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Fetch from API
+        async function fetchFromAPI(index) {
+            const api = API_SOURCES[index];
+            const url = `${api.url}${api.params}&apiKey=${api.key}`;
+            const response = await fetch(url);
+            return await response.json();
+        }
+
+        // Process news data
+        function processNews(articles) {
+            allNews = articles
+                .filter(article => 
+                    article.title && 
+                    article.urlToImage && 
+                    article.description &&
+                    !article.title.includes('[Removed]')
+                )
+                .slice(0, 30);
+            
+            if (allNews.length === 0) {
+                loadBackupNews();
+                return;
+            }
+            
+            updateStats();
+            displayFeaturedNews();
+            displayNews();
+            updateBreakingNews();
+        }
+
+        // Load backup news
+        function loadBackupNews() {
+            allNews = BACKUP_NEWS.map(news => ({
+                ...news,
+                urlToImage: news.urlToImage || 'https://via.placeholder.com/800x600/c41e3a/ffffff?text=Saidur+Update+News'
+            }));
+            
+            updateStats();
+            displayFeaturedNews();
+            displayNews();
+            updateBreakingNews();
+        }
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('totalNews').textContent = allNews.length;
+            document.getElementById('trendingCount').textContent = Math.min(allNews.length, 10);
+        }
+
+        // Display Featured News
+        function displayFeaturedNews() {
+            const container = document.getElementById('featuredSection');
+            if (allNews.length === 0) return;
+
+            const featured = allNews.slice(0, 4);
+            const main = featured[0];
+            const sidebar = featured.slice(1);
+
+            container.innerHTML = `
+                <div class="featured-main" onclick="openNews('${encodeURIComponent(main.url)}')">
+                    <img src="${main.urlToImage}" alt="${main.title}">
+                    <div class="featured-overlay">
+                        <span class="featured-category">${getCategory(main)}</span>
+                        <h2 class="featured-title">${main.title}</h2>
+                        <div class="featured-meta">
+                            <span><i class="far fa-clock"></i> ${getTimeAgo(main.publishedAt)}</span>
+                            <span><i class="far fa-user"></i> ${main.source.name}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-sidebar">
+                    ${sidebar.map(news => `
+                        <div class="sidebar-item" onclick="openNews('${encodeURIComponent(news.url)}')">
+                            <img src="${news.urlToImage}" alt="${news.title}">
+                            <div class="sidebar-content">
+                                <h4>${news.title.substring(0, 80)}...</h4>
+                                <small><i class="far fa-clock"></i> ${getTimeAgo(news.publishedAt)}</small>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Display News Grid
+        function displayNews() {
+            const container = document.getElementById('newsContainer');
+            const newsToDisplay = currentCategory === 'all' 
+                ? allNews.slice(4, 16) 
+                : allNews.filter(n => getCategory(n) === currentCategory).slice(0, 12);
+
+            if (newsToDisplay.length === 0) {
+                container.innerHTML = `
+                    <div class="no-news">
+                        <i class="fas fa-newspaper"></i>
+                        <h3>কোনো খবর পাওয়া যায়নি</h3>
+                        <p>অন্য ক্যাটাগরি দেখুন</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = newsToDisplay.map(news => `
+                <div class="news-card" onclick="openNews('${encodeURIComponent(news.url)}')">
+                    <div class="news-image-container">
+                        <img src="${news.urlToImage}" alt="${news.title}" class="news-image">
+                        <span class="news-badge">${getCategory(news)}</span>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-excerpt">${news.description || 'বিস্তারিত পড়তে ক্লিক করুন...'}</p>
+                        <div class="news-footer">
+                            <div class="news-meta">
+                                <span><i class="far fa-clock"></i> ${getTimeAgo(news.publishedAt)}</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn facebook" onclick="shareNews('facebook', '${encodeURIComponent(news.url)}', event)">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                                <button class="share-btn twitter" onclick="shareNews('twitter', '${encodeURIComponent(news.url)}', event)">
+                                    <i class="fab fa-twitter"></i>
+                                </button>
+                                <button class="share-btn whatsapp" onclick="shareNews('whatsapp', '${encodeURIComponent(news.url)}', '${encodeURIComponent(news.title)}', event)">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update Breaking News
+        function updateBreakingNews() {
+            const ticker = document.getElementById('breakingTicker');
+            const breaking = allNews.slice(0, 5);
+            
+            const content = breaking.map(news => 
+                `<span class="ticker-item"><i class="fas fa-fire"></i> ${news.title}</span>`
+            ).join('');
+            
+            ticker.innerHTML = content + content;
+        }
+
+        // Get category
+        function getCategory(news) {
+            if (news.category) return news.category;
+            
+            const text = (news.title + ' ' + (news.description || '')).toLowerCase();
+            
+            if (text.includes('cricket') || text.includes('football') || text.includes('sport')) return 'খেলা';
+            if (text.includes('tech') || text.includes('ai') || text.includes('computer')) return 'প্রযুক্তি';
+            if (text.includes('business') || text.includes('economy') || text.includes('market')) return 'অর্থনীতি';
+            if (text.includes('movie') || text.includes('music') || text.includes('entertainment')) return 'বিনোদন';
+            if (text.includes('bangladesh') || text.includes('dhaka')) return 'জাতীয়';
+            
+            return 'আন্তর্জাতিক';
+        }
+
+        // Get time ago
+        function getTimeAgo(dateString) {
+            const now = new Date();
+            const past = new Date(dateString);
+            const diff = Math.floor((now - past) / 1000);
+
+            if (diff < 60) return 'এইমাত্র';
+            if (diff < 3600) return `${Math.floor(diff / 60)} মিনিট আগে`;
+            if (diff < 86400) return `${Math.floor(diff / 3600)} ঘণ্টা আগে`;
+            
+            return past.toLocaleDateString('bn-BD');
+        }
+
+        // Open news
+        function openNews(url) {
+            window.open(decodeURIComponent(url), '_blank');
+        }
+
+        // Share news
+        function shareNews(platform, url, title, event) {
+            event.stopPropagation();
+            const decodedUrl = decodeURIComponent(url);
+            const decodedTitle = title ? decodeURIComponent(title) : 'Saidur Update News';
+            const whatsappNumber = '8801770157540';
+            
+            const shareUrls = {
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${decodedUrl}`,
+                twitter: `https://twitter.com/intent/tweet?url=${decodedUrl}&text=${decodedTitle}`,
+                whatsapp: `https://wa.me/${whatsappNumber}?text=${decodedTitle}%0A${decodedUrl}`
+            };
+
+            if (shareUrls[platform]) {
+                window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+            }
+        }
+
+        // Filter news
+        function filterNews(category, event) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.category-pill').forEach(pill => {
+                pill.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            displayNews();
+        }
+
+        // Filter by category from nav
+        function filterByCategory(category, event) {
+            event.preventDefault();
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.closest('a').classList.add('active');
+            
+            currentCategory = category === 'all' ? 'all' : category;
+            
+            document.querySelectorAll('.category-pill').forEach(pill => {
+                pill.classList.remove('active');
+                if ((category === 'all' && pill.textContent.includes('সব খবর')) ||
+                    pill.textContent.includes(category)) {
+                    pill.classList.add('active');
+                }
+            });
+            
+            displayNews();
+            document.getElementById('newsContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Search news
+        function searchNews() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            if (!query) {
+                alert('অনুগ্রহ করে খুঁজতে কিছু লিখুন');
+                return;
+            }
+
+            const results = allNews.filter(news => 
+                news.title.toLowerCase().includes(query) || 
+                (news.description && news.description.toLowerCase().includes(query))
+            );
+
+            const container = document.getElementById('newsContainer');
+            
+            if (results.length === 0) {
+                container.innerHTML = `
+                    <div class="no-news">
+                        <i class="fas fa-search"></i>
+                        <h3>"${query}" এর জন্য কোনো ফলাফল নেই</h3>
+                        <p>অন্য কিছু খুঁজে দেখুন</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = results.map(news => `
+                    <div class="news-card" onclick="openNews('${encodeURIComponent(news.url)}')">
+                        <div class="news-image-container">
+                            <img src="${news.urlToImage}" alt="${news.title}" class="news-image">
+                            <span class="news-badge">${getCategory(news)}</span>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">${news.title}</h3>
+                            <p class="news-excerpt">${news.description || ''}</p>
+                            <div class="news-footer">
+                                <div class="news-meta">
+                                    <span><i class="far fa-clock"></i> ${getTimeAgo(news.publishedAt)}</span>
+                                </div>
+                                <div class="share-buttons">
+                                    <button class="share-btn whatsapp" onclick="shareNews('whatsapp', '${encodeURIComponent(news.url)}', '${encodeURIComponent(news.title)}', event)">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Handle search
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                searchNews();
+            }
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            darkMode = !darkMode;
+            document.body.classList.toggle('dark-mode');
+            
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+            if (darkMode) {
+                icon.className = 'fas fa-sun';
+                text.textContent = 'লাইট মোড';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                text.textContent = 'ডার্ক মোড';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Setup scroll button
+        function setupScrollButton() {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.add('show');
+                } else {
+                    scrollBtn.classList.remove('show');
+                }
+            });
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show loading
+        function showLoading() {
+            document.getElementById('loadingScreen').classList.remove('hidden');
+        }
+
+        // Hide loading
+        function hideLoading() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 500);
+        }
+
+        // Check saved theme
+        function checkSavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                toggleTheme();
+            }
+        }
+
+        // Auto refresh news every 10 minutes
+        setInterval(() => {
+            loadNews();
+        }, 600000);
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            checkSavedTheme();
+            init();
+        });
+
+        // Add smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Console branding
+        console.log('%c🔥 Saidur Update News 🔥', 'color: #c41e3a; font-size: 24px; font-weight: bold;');
+        console.log('%cDeveloped by Saidur Rahman', 'color: #0f3460; font-size: 14px;');
+        console.log('%cWhatsApp: 01770157540', 'color: #25d366; font-size: 14px;');
+        console.log('%chttps://saidursono.github.io/Saidur/', 'color: #666; font-size: 12px;');
+    </script>
+</body>
+</html>
